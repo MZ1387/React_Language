@@ -1,41 +1,23 @@
 // Express Server
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
+const express = require('express');
+const http = require('http');
+const bodyParser = require("body-parser");
+const logger = require('morgan');
+const app = express();
 
-let app = express();
-
-var PORT = process.env.PORT || 3000;
-
-// Run Morgan for Logging
+// -------------------------------------------------
+//App Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.static("./public"));
-
 // -------------------------------------------------
+// Server Setup
+const PORT = process.env.PORT || 3000;
+const server = http.createServer(app);
 
-// MongoDB configuration
-mongoose.connect("mongodb://127.0.0.1/react-language");
-var db = mongoose.connection;
-
-db.on("error", function(err) {
-  console.log("Mongoose Error: ", err);
+server.listen(PORT, function() {
+  console.log('App listening on PORT: ' + PORT);
 });
-
-db.once("open", function() {
-  console.log("Mongoose connection successful.");
-});
-
-// -------------------------------------------------
-
-app.get('*', function(req, res) {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-})
-
-// -------------------------------------------------
-
-export default app;
