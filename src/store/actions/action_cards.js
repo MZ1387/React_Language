@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '../stubs/index';
+import '../../stubs/index';
 
 export const GET_CARDS = 'GET_CARDS';
 

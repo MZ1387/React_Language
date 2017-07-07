@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Container, Image, Segment } from 'semantic-ui-react';
-import { getCards } from '../actions/action_cards';
+import { getCards } from '../../store/actions/action_cards';
 import CardModal from './card_modal';
 
 class CardsList extends Component {

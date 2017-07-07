@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Container, Image, Segment } from 'semantic-ui-react';
-import { getLetters } from '../actions/action_letters';
+import { getLetters } from '../../store/actions/action_letters';
 import LetterModal from './letter_modal';
 
 class LettersList extends Component {

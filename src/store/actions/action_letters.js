@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '../stubs/index';
+import '../../stubs/index';
 
 export const GET_LETTERS = 'GET_LETTERS';
 
