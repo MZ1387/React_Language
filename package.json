@@ -5,7 +5,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "axios-mock-adapter": "^1.9.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "http": "0.0.0",
     "lodash": "^4.17.4",
+    "mongoose": "^4.11.1",
+    "morgan": "^1.8.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",

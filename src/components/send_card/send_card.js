@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Container, Divider, Form, Label, Segment, Select, TextArea } from 'semantic-ui-react'
+import { Button, Container, Form, Segment, Select, TextArea } from 'semantic-ui-react'
 
 class SendCard extends Component {
   render() {

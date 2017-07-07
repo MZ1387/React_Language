@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Divider, Form, Segment, TextArea } from 'semantic-ui-react'
+import { Button, Container, Form, Segment, TextArea } from 'semantic-ui-react'
 
 const SendLetter = () => (
   <Container>
