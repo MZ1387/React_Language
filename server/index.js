@@ -1,4 +1,4 @@
-// Express Server
+// Initialize Express Server
 const express = require('express');
 const http = require('http');
 const bodyParser = require("body-parser");
@@ -9,7 +9,7 @@ const app = express();
 //App Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodmyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
