@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
-import LettersList from './reducer_letters';
+
 import CardsList from './reducer_cards';
+import LettersList from './reducer_letters';
+import LessonsList from './reducer_lessons';
 
 const rootReducer = combineReducers({
   letters: LettersList,
-  cards: CardsList
+  cards: CardsList,
+  lessons: LessonsList
 });
 
 export default rootReducer;

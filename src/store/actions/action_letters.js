@@ -4,7 +4,7 @@ import '../../stubs/index';
 export const GET_LETTERS = 'GET_LETTERS';
 
 export function getLetters() {
-  const data = axios.get('/letters');
+  const data = axios.get('/api/letters');
 
   return {
     type: GET_LETTERS,

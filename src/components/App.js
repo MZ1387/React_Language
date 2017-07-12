@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch  } from 'react-router-dom';
 
+import Home from './home/home';
+import StudentStart from './start/start_student';
+import TeacherStart from './start/start_teacher';
 import LettersList from './letters/letters_list';
 import CardsList from './cards/cards_list'
-import SendLetter from './send_letter/send_letter'
-import SendCard from './send_card/send_card'
+import Lessons from './lessons/lessons';
 
 class App extends Component {
   render() {
@@ -12,11 +14,12 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Switch>
+            <Route path='/lessons' component={Lessons} />
             <Route path='/read' component={LettersList} />
-            <Route path='/send/card' component={SendCard} />
-            <Route path='/send/letter' component={SendLetter} />
+            <Route path='/start/student' component={StudentStart} />
+            <Route path='/start/teacher' component={TeacherStart} />
             <Route path='/study' component={CardsList} />
-            <Route path='/' component={App} />
+            <Route path='/' component={Home} />
           </Switch>
         </div>
       </BrowserRouter>
