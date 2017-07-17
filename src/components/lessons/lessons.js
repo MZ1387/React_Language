@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCategories, getLessons } from '../../store/actions/action_lessons';
 import { Grid, Table, Container, Segment, Button, Menu, Icon, Header } from 'semantic-ui-react';
-import LessonModal from './lesson_modal';
+
+import { lessonsRef } from '../../firebase';
+import { getLessons } from '../../store/actions/action_lessons';
+import LessonModalAdd from './lesson_modal_add';
+import LessonModalUpdate from './lesson_modal_update';
 
 class Lessons extends Component {
   componentDidMount() {
-    this.props.dispatch(getLessons());
-    this.props.dispatch(getCategories());
+    lessonsRef.on('value', snap => {
+      let lessons = [];
+      snap.forEach(lesson => {
+        const { title, description, message, link, vocab } = lesson.val();
+        const serverKey = lesson.key;
+        lessons.push({ serverKey, title, description, message, link, vocab });
+      });
+      this.props.dispatch(getLessons(lessons));
+    })
   }
 
-  toggleVisibility = () => this.setState({ visible: !this.state.visible });
+  renderLessons = () => {
+    return this.props.lessons.map((lesson) => {
+      const { title, description, serverKey } = lesson;
 
-  renderLessons = (lesson) => {
-    const { title, description } = lesson;
-
-    return (
-      <Table.Row key={title}>
-        <Table.Cell>{title}</Table.Cell>
-        <Table.Cell>{description}</Table.Cell>
-        <Table.Cell>
-          <LessonModal lessonDetails={lesson} categories={this.props.categories}>
-            <Button content='Edit' floated='right'/>
-          </LessonModal>
-        </Table.Cell>
-      </Table.Row>
-    );
+      return (
+        <Table.Row key={serverKey}>
+          <Table.Cell>{title}</Table.Cell>
+          <Table.Cell>
+            {(description.length > 50 ) ? (description.substring(0, 50) + '...') : (description)}
+          </Table.Cell>
+          <Table.Cell>
+            <LessonModalUpdate lessonDetails={lesson} >
+              <Button content='Edit' floated='right'/>
+            </LessonModalUpdate>
+          </Table.Cell>
+        </Table.Row>
+      );
+    })
   }
 
   render() {
@@ -35,12 +47,12 @@ class Lessons extends Component {
           <Segment>
             <Grid>
               <Grid.Column width={8}>
-                <Header as='h2'>Lessons</Header>
+                <Header as='h1'>Lessons</Header>
               </Grid.Column>
               <Grid.Column width={8}>
-                <LessonModal lessonDetails={''} categories={this.props.categories}>
+                <LessonModalAdd >
                   <Button content='Add Lesson' floated='right' size='small' />
-                </LessonModal>
+                </LessonModalAdd>
               </Grid.Column>
             </Grid>
             <Table fixed striped>
@@ -53,7 +65,7 @@ class Lessons extends Component {
               </Table.Header>
 
               <Table.Body>
-                {this.props.lessons.map(this.renderLessons, this)}
+                {this.renderLessons()}
               </Table.Body>
 
               <Table.Footer>
@@ -78,14 +90,13 @@ class Lessons extends Component {
           </Segment>
         </Container>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    lessons: state.lessons.lessons,
-    categories: state.lessons.categories
+    lessons: state.lessons.lessons
   }
 }
 

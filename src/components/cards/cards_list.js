@@ -5,7 +5,11 @@ import { getCards } from '../../store/actions/action_cards';
 import CardModal from './card_modal';
 
 class CardsList extends Component {
-  state = { open: false }
+  constructor(props) {
+    super(props);
+
+    this.state = { open: false }
+  }
 
   componentDidMount() {
     this.props.dispatch(getCards());

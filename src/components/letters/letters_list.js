@@ -5,7 +5,11 @@ import { getLetters } from '../../store/actions/action_letters';
 import LetterModal from './letter_modal';
 
 class LettersList extends Component {
-  state = { open: false }
+  constructor(props) {
+    super(props);
+
+    this.state = { open: false }
+  }
 
   componentDidMount() {
     this.props.dispatch(getLetters());
@@ -26,7 +30,7 @@ class LettersList extends Component {
           <Card.Description></Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <LetterModal letterDetails={letter} close={this.close}>
+          <LetterModal letterDetails={letter}>
             <Button basic fluid color='red' onClick={this.show}>Open</Button>
           </LetterModal>
         </Card.Content>

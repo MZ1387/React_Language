@@ -8,7 +8,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -33,7 +32,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -60,7 +58,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -85,7 +82,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -112,7 +108,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -137,7 +132,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -164,7 +158,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -189,7 +182,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -216,7 +208,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -241,7 +232,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -268,7 +258,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -293,7 +282,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -320,7 +308,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -345,7 +332,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
@@ -372,7 +358,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -398,7 +383,6 @@ module.exports = [
     vocab: [{
         term: 'Tree',
         definition: 'A tree is a...',
-        definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'
     }, {
@@ -423,7 +407,6 @@ module.exports = [
     video: 'https://www.youtube.com/watch?v=0XpBiZv0RWY',
     vocab: [{
         term: 'Tree',
-        definition: 'A tree is a...',
         definition: 'A tree is a...',
         example: 'Today I went to the park...',
         category: 'nature'

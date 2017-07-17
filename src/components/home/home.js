@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Button, Container, Divider, Header, Segment } from 'semantic-ui-react';
 import LoginModal from './login_modal';
 
 class Home extends Component {
-  state = { open: false }
+  constructor(props) {
+    super(props);
+
+    this.state = { open: false }
+  }
 
   show = (size) => () => this.setState({ size, open: true })
   close = () => this.setState({ open: false })
