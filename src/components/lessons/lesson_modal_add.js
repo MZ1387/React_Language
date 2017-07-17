@@ -17,7 +17,7 @@ class LessonModalAdd extends Component {
       term: '',
       definition: '',
       example: '',
-      category: ''
+      categories: []
     };
 
   }
@@ -93,7 +93,9 @@ class LessonModalAdd extends Component {
                         <Form.TextArea label='Word/Phrase' placeholder='Write a word or phrase' onChange={event => this.setState({ term: event.target.value })} value={this.state.term} />
                         <Form.TextArea label='Definition' placeholder='Define vocabulary' onChange={event => this.setState({ definition: event.target.value })} value={this.state.definition} />
                         <Form.TextArea label='Example' placeholder='Write an example' onChange={event => this.setState({ example: event.target.value })} value={this.state.example} />
-                        {/* <Form.Select label='Category' upward options={this.props.categories} placeholder='Categories' onChange={event => this.setState({ category: event.target.value })} /> */}
+                        {/* <Form.Select label='Category' upward options={this.props.categories} placeholder='Categories'
+                          // onChange={event => this.setState({ categories: event.target.value })}
+                        /> */}
                         <Divider />
                         <Form.Button fluid onClick={() => this.addVocab()}>Submit</Form.Button>
                       </Form>

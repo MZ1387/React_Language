@@ -1,22 +1,7 @@
-import axios from 'axios';
-import '../../stubs/index';
-import * as firebase from 'firebase';
-import { lessonsRef } from '../../firebase';
-
-export const GET_CATEGORIES = 'GET_CATEGORIES';
-export const GET_LESSONS = 'GET_LESSONS';
-export const POST_LESSON = 'POST_LESSON';
+import { GET_CATEGORIES, GET_LESSONS, POST_LESSON } from '../constants';
 
 // GET VOCAB CATEGORY
-export function getCategories() {
-  const data = axios.get('/api/categories');
-  // const dbLessons = firebase.database().ref('/lessons');
-  // dbLessons.on('value', snap => {
-  //     this.setState({
-  //       speed: snap.val()
-  //     })
-  //   });
-
+export function getCategories(data) {
   return {
     type: GET_CATEGORIES,
     payload: data

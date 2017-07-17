@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, GET_LESSONS } from '../actions/action_lessons';
+import { GET_CATEGORIES, GET_LESSONS, POST_LESSON } from '../constants';
 
 export default function(state = {
   lessons: [],
