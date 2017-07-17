@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Modal } from 'semantic-ui-react';
+import { Button, Grid, Modal } from 'semantic-ui-react';
 import LetterTable from './letter_table';
 import LetterSegment from './letter_segment';
 
 class LetterModal extends Component {
   render() {
+    console.log(this.props);
     const { subject, vocab, original, translation } = this.props.letterDetails;
 
     return (
@@ -26,9 +27,6 @@ class LetterModal extends Component {
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            {/* <Button basic color='red' onClick={this.props.children.close}>
-              Close
-            </Button> */}
           </Modal.Actions>
         </Modal>
       </div>

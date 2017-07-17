@@ -6,9 +6,11 @@ An Educational Language application that uses React and Redux. Uses Node Express
 
 - React
 - Redux
+- Redux Form
 - Node
 - Express
 - MongoDB
 - API
 - Semantic UI
 - Firebase
+- Google Authentication

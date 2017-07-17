@@ -9,14 +9,15 @@ export default function(state = {
     case GET_CATEGORIES:
       return {
         ...state,
-        categories: action.payload.data
+        categories: action.payload
       }
       break;
     case GET_LESSONS:
       return {
         ...state,
-        lessons: action.payload.data
+        lessons: action.payload
       }
+      break;
     default:
       return state;
   }
