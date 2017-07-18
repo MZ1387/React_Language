@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Accordion } from 'semantic-ui-react'
+import { Accordion, Form, TextArea } from 'semantic-ui-react'
 
 class LetterSegment extends Component {
   render() {
@@ -7,18 +7,26 @@ class LetterSegment extends Component {
     const panels = [
       {
         title: 'Original Message',
-        content: original,
+        content: (
+          <Form>
+            <TextArea autoHeight rows={20} placeholder='' value={original} />
+          </Form>
+        ),
         active: 'open'
       },
       {
         title: 'Translated Message',
-        content: translation
+        content: (
+          <Form>
+            <TextArea autoHeight rows={20} placeholder='' value={original} />
+          </Form>
+        )
       }
-    ]
+    ];
 
     return (
       <div>
-        <Accordion panels={panels} styled exclusive={false} fluid/>
+        <Accordion panels={panels} exclusive={false} fluid/>
       </div>
     );
   }

@@ -19,17 +19,17 @@ class Lessons extends Component {
       this.props.dispatch(getLessons(lessons));
     })
 
-    categoriesRef.on('value', snap => {
-      let categories = [snap.val()];
-
-      snap.forEach(category => {
-        // const { title, description, message, link, vocab } = lesson.val();
-        // const serverKey = lesson.key;
-        categories.push(category);
-      });
-      console.log(categories);
-      // this.props.dispatch(getCategories(categories));
-    })
+    // categoriesRef.on('value', snap => {
+    //   let categories = [snap.val()];
+    //
+    //   snap.forEach(category => {
+    //     // const { title, description, message, link, vocab } = lesson.val();
+    //     // const serverKey = lesson.key;
+    //     categories.push(category);
+    //   });
+    //   console.log(categories);
+    //   // this.props.dispatch(getCategories(categories));
+    // })
   }
 
   renderLessons = () => {
@@ -43,9 +43,11 @@ class Lessons extends Component {
             {(description.length > 50 ) ? (description.substring(0, 50) + '...') : (description)}
           </Table.Cell>
           <Table.Cell>
-            {/* <LessonModalUpdate lessonDetails={lesson} categories={this.props.categories} >
+            <LessonModalUpdate lessonDetails={lesson}
+              // categories={this.props.categories}
+            >
               <Button content='Edit' floated='right'/>
-            </LessonModalUpdate> */}
+            </LessonModalUpdate>
           </Table.Cell>
         </Table.Row>
       );
@@ -55,16 +57,18 @@ class Lessons extends Component {
   render() {
     return (
       <div>
-        <Container>
-          {/* <Segment> */}
+        {/* <Container> */}
+          <Segment basic>
             <Grid>
               <Grid.Column width={8}>
                 <Header as='h1'>Lessons</Header>
               </Grid.Column>
               <Grid.Column width={8}>
-                {/* <LessonModalAdd categories={this.props.categories} >
+                <LessonModalAdd
+                  // categories={this.props.categories}
+                >
                   <Button content='Add Lesson' floated='right' size='small' />
-                </LessonModalAdd> */}
+                </LessonModalAdd>
               </Grid.Column>
             </Grid>
             <Table fixed striped>
@@ -99,8 +103,8 @@ class Lessons extends Component {
               </Table.Row>
               </Table.Footer>
             </Table>
-          {/* </Segment> */}
-        </Container>
+          </Segment>
+        {/* </Container> */}
       </div>
     );
   }

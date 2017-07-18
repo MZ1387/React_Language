@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { Icon, Table, Grid, Segment, Divider, Button, Input, Form, TextArea, Modal } from 'semantic-ui-react';
 
-import { lessonsRef } from '../../firebase';
+import { lessonsRef, categoriesRef } from '../../firebase';
+import { getCategories } from '../../store/actions/action_lessons';
 
 class LessonModalAdd extends Component {
   constructor(props) {
@@ -17,9 +19,25 @@ class LessonModalAdd extends Component {
       term: '',
       definition: '',
       example: '',
+      category: '',
       categories: []
     };
+  }
 
+  componentDidMount() {
+    categoriesRef.on('value', snap => {
+
+      let stateOptions = [];
+
+      snap.forEach(option => {
+        stateOptions.push({key: option.val(), value: option.val(), text: option.val()});
+      })
+
+      this.setState({ categories: stateOptions})
+
+      const categories = snap.val();
+      this.props.dispatch(getCategories(categories));
+    })
   }
 
   renderVocab = () => {
@@ -56,7 +74,13 @@ class LessonModalAdd extends Component {
 
   addLesson() {
     const { title, description, message, link, vocab } = this.state;
-    lessonsRef.push({ title, description, message, link, vocab })
+    const videoId = link.split('=').pop().split('&t').shift();
+
+    lessonsRef.push({ title, description, message, link: videoId, vocab })
+    // categoriesRef.transaction(data => {
+    //   const categories = ['noun', 'verb', 'adjective', 'phrasal verb', 'idiom', 'slang'];
+    //   return categories.sort();
+    //     })
   }
 
   render() {
@@ -68,8 +92,8 @@ class LessonModalAdd extends Component {
             <Form>
               <Form.Field control={Input} label='Title' placeholder='Title' onChange={event => this.setState({ title: event.target.value })} />
               <Form.Field control={TextArea} label='Description' placeholder='Description' onChange={event => this.setState({ description: event.target.value })} />
-              <Form.Field control={TextArea} label='Message' placeholder='Write a message' onChange={event => this.setState({ message: event.target.value })} />
-              <Form.Field control={Input} label='Video Link' placeholder='Video Link' onChange={event => this.setState({ link: event.target.value })} />
+              <Form.Field control={TextArea} autoHeight rows={20} label='Message' placeholder='Write a message' onChange={event => this.setState({ message: event.target.value })} />
+              <Form.Field control={Input} label='YouTube Link' placeholder='YouTube Link' onChange={event => this.setState({ link: event.target.value })} />
                 <Grid>
                   <Grid.Column width={10}>
                     <Table fixed striped>
@@ -93,9 +117,12 @@ class LessonModalAdd extends Component {
                         <Form.TextArea label='Word/Phrase' placeholder='Write a word or phrase' onChange={event => this.setState({ term: event.target.value })} value={this.state.term} />
                         <Form.TextArea label='Definition' placeholder='Define vocabulary' onChange={event => this.setState({ definition: event.target.value })} value={this.state.definition} />
                         <Form.TextArea label='Example' placeholder='Write an example' onChange={event => this.setState({ example: event.target.value })} value={this.state.example} />
-                        {/* <Form.Select label='Category' upward options={this.props.categories} placeholder='Categories'
-                          // onChange={event => this.setState({ categories: event.target.value })}
-                        /> */}
+                        <Form.Select label='Category'
+                          upward
+                          options={this.state.categories}
+                          placeholder='Categories'
+                          onChange={(event, { value }) => this.setState({ category: value })}
+                        />
                         <Divider />
                         <Form.Button fluid onClick={() => this.addVocab()}>Submit</Form.Button>
                       </Form>
@@ -117,4 +144,10 @@ class LessonModalAdd extends Component {
   }
 }
 
-export default LessonModalAdd;
+function mapStateToProps(state) {
+  return {
+    categories: state.lessons.categories
+  };
+}
+
+export default connect(mapStateToProps)(LessonModalAdd);

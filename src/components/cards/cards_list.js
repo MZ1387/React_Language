@@ -1,6 +1,10 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Container, Image, Segment } from 'semantic-ui-react';
+
+import { lessonsRef, categoriesRef } from '../../firebase';
+import { getCategories, getLessons } from '../../store/actions/action_lessons';
 import { getCards } from '../../store/actions/action_cards';
 import CardModal from './card_modal';
 
@@ -8,21 +12,44 @@ class CardsList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false }
+    this.state = {
+      categories: []
+    }
   }
 
   componentDidMount() {
-    this.props.dispatch(getCards());
+    lessonsRef.on('value', snap => {
+      let lessons = [];
+      snap.forEach(lesson => {
+        const { title, description, message, link, vocab } = lesson.val();
+        const serverKey = lesson.key;
+        lessons.push({ serverKey, title, description, message, link, vocab });
+      });
+      this.props.dispatch(getLessons(lessons));
+    });
+
+    categoriesRef.on('value', snap => {
+
+      let categories = [];
+
+      snap.forEach(category => {
+        categories.push(category.val());
+      })
+
+      this.setState({ categories })
+      console.log(this.state.categories);
+      // const categories = snap.val();
+      // this.props.dispatch(getCategories(categories));
+    })
   }
 
-  show = () => this.setState({ open: true })
-  close = () => this.setState({ open: false })
+  renderCards() {
+    return this.state.categories.map((category, index) => {
+      const categoryVocab = _.filter(this.props.vocab, ['category', category]);
+      console.log('categoryVocab', categoryVocab);
 
-  renderCards = (card) => {
-    const { category } = card;
-
-    return (
-      <Card key={category}>
+      return (
+        <Card key={index}>
         <Card.Content>
           <Image floated='right' size='mini' src='https://react.semantic-ui.com/assets/images/avatar/small/stevie.jpg' />
           <Card.Header>
@@ -34,21 +61,28 @@ class CardsList extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <CardModal cardDetails={card}>
+          <CardModal
+            category={category}
+            categoryVocab={categoryVocab}
+          >
             <Button basic fluid color='red' onClick={this.show}>Open</Button>
           </CardModal>
         </Card.Content>
       </Card>
-    );
+      );
+    })
   }
 
   render() {
+    // console.log(this.props.vocab);
+    // const nouns = _.filter(this.props.vocab, ['category', 'noun']);
+    // console.log(nouns);
     return(
       <div>
         <Container>
           <Segment basic>
             <Card.Group itemsPerRow={6}>
-              {this.props.cards.map(this.renderCards)}
+              {this.renderCards()}
             </Card.Group>
           </Segment>
         </Container>
@@ -59,7 +93,8 @@ class CardsList extends Component {
 
 function mapStateToProps(state) {
   return {
-    cards: state.cards.all
+    vocab: state.lessons.vocab,
+    categories: state.lessons.categories
   };
 }
 

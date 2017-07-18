@@ -18,6 +18,7 @@ class StudentMenu extends Component {
           <Menu.Item name='Letters' active={activeItem === 'Letters'} onClick={this.handleItemClick} as={NavLink} to='/letters'/>
           <Menu.Item name='Cards' active={activeItem === 'Cards'} onClick={this.handleItemClick} as={NavLink} to='/cards'/>
           <Menu.Menu position='right'>
+            <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick} />
             <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
           </Menu.Menu>
         </Menu>

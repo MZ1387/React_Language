@@ -1,10 +1,6 @@
-import axios from 'axios';
-import '../../stubs/index';
+import { GET_CARDS } from '../constants';
 
-export const GET_CARDS = 'GET_CARDS';
-
-export function getCards() {
-  const data = axios.get('/api/cards')
+export function getCards(data) {
 
   return {
     type: GET_CARDS,

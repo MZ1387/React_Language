@@ -1,11 +1,6 @@
-import axios from 'axios';
-import '../../stubs/index';
+import { GET_LETTERS } from '../constants';
 
-export const GET_LETTERS = 'GET_LETTERS';
-
-export function getLetters() {
-  const data = axios.get('/api/letters');
-
+export function getLetters(data) {
   return {
     type: GET_LETTERS,
     payload: data

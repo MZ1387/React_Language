@@ -1,8 +1,10 @@
+import _ from 'lodash';
 import { GET_CATEGORIES, GET_LESSONS, POST_LESSON } from '../constants';
 
 export default function(state = {
   lessons: [],
-  categories: []
+  categories: [],
+  vocab: []
 }, action) {
 
   switch (action.type) {
@@ -13,9 +15,11 @@ export default function(state = {
       }
       break;
     case GET_LESSONS:
+      let vocab = _.flatten(action.payload.map(lesson => lesson.vocab));
       return {
         ...state,
-        lessons: action.payload
+        lessons: action.payload,
+        vocab: vocab
       }
       break;
     default:

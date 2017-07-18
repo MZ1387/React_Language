@@ -1,4 +1,4 @@
-import { GET_CARDS } from '../actions/action_cards';
+import { GET_CARDS } from '../constants';
 
 export default function(state = {
   all:[],

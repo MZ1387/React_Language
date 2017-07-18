@@ -1,26 +1,47 @@
 import React, { Component } from 'react';
-import { Button, Grid, Modal } from 'semantic-ui-react';
+import { Button, Grid, Modal, Embed } from 'semantic-ui-react';
 import LetterTable from './letter_table';
 import LetterSegment from './letter_segment';
 
 class LetterModal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      translation: 'HI'
+    }
+  }
+
   render() {
-    console.log(this.props);
-    const { subject, vocab, original, translation } = this.props.letterDetails;
+    const { title, description, message, link, vocab, serverKey } = this.props.letterDetails;
 
     return (
       <div>
-        <Modal size={'fullscreen'} trigger={this.props.children} closeIcon='close'>
-          <Modal.Header>{subject}</Modal.Header>
+        <Modal size={'large'} trigger={this.props.children} closeIcon='close'>
+          <Modal.Header>{title}</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Grid fluid>
+              <Grid>
                 <Grid.Row>
-                  <Grid.Column width={3}>
-                    <LetterTable vocab={vocab}/>
+                  <Grid.Column width={16}>
+                    <LetterSegment
+                      original={message}
+                      translation={message}
+                    />
                   </Grid.Column>
-                  <Grid.Column width={13}>
-                    <LetterSegment original={original} translation={translation} />
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column width={6}>
+                    <LetterTable
+                      vocab={vocab}
+                    />
+                  </Grid.Column>
+                  <Grid.Column width={10}>
+                    <Embed
+                      id={link}
+                      placeholder='http://www.oneequalworld.com/wp-content/uploads/2017/02/shutterstock_201120113.jpg'
+                      source='youtube'
+                    />
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -33,6 +54,5 @@ class LetterModal extends Component {
     );
   }
 }
-
 
 export default LetterModal
