@@ -1,34 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 
-function renderVocab(word) {
-  const { original, translation } = word;
+class LetterTable extends Component {
+  renderVocab() {
+    return this.props.vocab.map((word, index) => {
+      const { term, definition, example, category } = word;
 
-  return (
-    <Table.Row key={original}>
-      <Table.Cell>{original}</Table.Cell>
-      <Table.Cell>{translation}</Table.Cell>
-    </Table.Row>
-  )
+      return (
+        <Table.Row key={index}>
+          <Table.Cell>{term}</Table.Cell>
+          <Table.Cell></Table.Cell>
+        </Table.Row>
+      );
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell colSpan='2'>Vocab</Table.HeaderCell>
+            </Table.Row>
+            <Table.Row>
+              <Table.HeaderCell colSpan='1'>Original</Table.HeaderCell>
+              <Table.HeaderCell colSpan='1'>Translation</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {this.renderVocab()}
+          </Table.Body>
+         </Table>
+      </div>
+    );
+  }
 }
 
-export default (props) => {
-  return (
-    <div>
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell colSpan='2'>Vocab</Table.HeaderCell>
-          </Table.Row>
-          <Table.Row>
-            <Table.HeaderCell colSpan='1'>Original</Table.HeaderCell>
-            <Table.HeaderCell colSpan='1'>Translation</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {props.vocab.map(renderVocab)}
-        </Table.Body>
-       </Table>
-    </div>
-  );
-}
+export default LetterTable;

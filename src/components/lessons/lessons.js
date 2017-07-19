@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Table, Container, Segment, Button, Menu, Icon, Header } from 'semantic-ui-react';
 
-import { lessonsRef } from '../../firebase';
+import { lessonsRef, categoriesRef } from '../../firebase';
 import { getLessons } from '../../store/actions/action_lessons';
 import LessonModalAdd from './lesson_modal_add';
 import LessonModalUpdate from './lesson_modal_update';
@@ -18,6 +18,18 @@ class Lessons extends Component {
       });
       this.props.dispatch(getLessons(lessons));
     })
+
+    // categoriesRef.on('value', snap => {
+    //   let categories = [snap.val()];
+    //
+    //   snap.forEach(category => {
+    //     // const { title, description, message, link, vocab } = lesson.val();
+    //     // const serverKey = lesson.key;
+    //     categories.push(category);
+    //   });
+    //   console.log(categories);
+    //   // this.props.dispatch(getCategories(categories));
+    // })
   }
 
   renderLessons = () => {
@@ -31,7 +43,9 @@ class Lessons extends Component {
             {(description.length > 50 ) ? (description.substring(0, 50) + '...') : (description)}
           </Table.Cell>
           <Table.Cell>
-            <LessonModalUpdate lessonDetails={lesson} >
+            <LessonModalUpdate lessonDetails={lesson}
+              // categories={this.props.categories}
+            >
               <Button content='Edit' floated='right'/>
             </LessonModalUpdate>
           </Table.Cell>
@@ -43,14 +57,16 @@ class Lessons extends Component {
   render() {
     return (
       <div>
-        <Container>
-          <Segment>
+        {/* <Container> */}
+          <Segment basic>
             <Grid>
               <Grid.Column width={8}>
                 <Header as='h1'>Lessons</Header>
               </Grid.Column>
               <Grid.Column width={8}>
-                <LessonModalAdd >
+                <LessonModalAdd
+                  // categories={this.props.categories}
+                >
                   <Button content='Add Lesson' floated='right' size='small' />
                 </LessonModalAdd>
               </Grid.Column>
@@ -88,7 +104,7 @@ class Lessons extends Component {
               </Table.Footer>
             </Table>
           </Segment>
-        </Container>
+        {/* </Container> */}
       </div>
     );
   }
@@ -97,6 +113,7 @@ class Lessons extends Component {
 function mapStateToProps(state) {
   return {
     lessons: state.lessons.lessons
+    // categories: state.lessons.categories
   }
 }
 

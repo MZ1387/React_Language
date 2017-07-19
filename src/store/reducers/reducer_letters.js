@@ -1,4 +1,4 @@
-import { GET_LETTERS } from '../actions/action_letters';
+import { GET_LETTERS } from '../constants';
 
 export default function(state = {
   all: [],
