@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import { Accordion, Form, TextArea } from 'semantic-ui-react'
+import { Accordion, Button, Form, TextArea } from 'semantic-ui-react'
 
 class LetterSegment extends Component {
   render() {
-    const { original, translation } = this.props;
     const panels = [
       {
         title: 'Original Message',
         content: (
           <Form>
-            <TextArea autoHeight rows={20} placeholder='' value={original} />
+            <TextArea autoHeight rows={20} placeholder='' value={this.props.original} />
           </Form>
         ),
         active: 'open'
@@ -18,7 +17,7 @@ class LetterSegment extends Component {
         title: 'Translated Message',
         content: (
           <Form>
-            <TextArea autoHeight rows={20} placeholder='' value={original} />
+            <TextArea autoHeight rows={20} placeholder='' value={this.props.translation} />
           </Form>
         )
       }
@@ -32,5 +31,4 @@ class LetterSegment extends Component {
   }
 }
 
-
-export default LetterSegment
+export default LetterSegment;

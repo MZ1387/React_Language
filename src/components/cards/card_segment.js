@@ -42,10 +42,10 @@ class CardSegment extends Component {
             as={Image}
             dimmed={active}
             dimmer={{ active, content }}
-            // onMouseEnter={this.handleShow}
+            onMouseEnter={this.handleShow}
             onMouseLeave={this.handleHide}
             size='large'
-            src='http://www.oneequalworld.com/wp-content/uploads/2017/02/shutterstock_201120113.jpg'
+            src='http://i66.tinypic.com/2ef3p14.jpg'
           />
           <div>
             <Header as='h1' className='postcard-text'>{term}</Header>

@@ -15,10 +15,11 @@ class StudentMenu extends Component {
 
     return (
       <div className='student-menu'>
-        <Menu pointing secondary>
+        <Menu pointing secondary fixed=''>
           <Menu.Item name='Lessons' active={activeItem === 'Lessons'} onClick={this.handleItemClick} as={NavLink} to='/lessons'/>
           <Menu.Item name='Letters' active={activeItem === 'Letters'} onClick={this.handleItemClick} as={NavLink} to='/letters'/>
           <Menu.Item name='Cards' active={activeItem === 'Cards'} onClick={this.handleItemClick} as={NavLink} to='/cards'/>
+          <Menu.Item name='Translate' active={activeItem === 'Translate'} onClick={this.handleItemClick} as={NavLink} to='/translator'/>
           <Menu.Menu position='right'>
             <StudentModal>
               <Menu.Item name='profile' />
