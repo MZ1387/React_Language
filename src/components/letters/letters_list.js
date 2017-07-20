@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, Container, Image, Segment } from 'semantic-ui-react';
+import { Button, Card, Container, Image, Segment, Header } from 'semantic-ui-react';
 
 import { lessonsRef, categoriesRef } from '../../firebase';
 import { getCategories, getLessons } from '../../store/actions/action_lessons';
@@ -37,35 +37,40 @@ class LettersList extends Component {
       const { title, description } = lesson;
 
       return (
-        <Card key={index}>
-          <Image src='http://icons.iconarchive.com/icons/webalys/kameleon.pics/256/Love-Letter-icon.png' />
-          <Card.Content>
-            <Card.Header>{title}</Card.Header>
-            <Card.Meta>HI</Card.Meta>
-            <Card.Description>
-              {(description.length > 25 ) ? (description.substring(0, 25) + '...') : (description)}
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
+        <Card
+          raised
+          key={index}
+          header={title}
+          image='http://www.oneequalworld.com/wp-content/uploads/2017/02/shutterstock_201120113.jpg'
+          description={description}
+          extra={
             <LetterModal letterDetails={lesson}>
-              <Button basic fluid color='red'>Open</Button>
+              <Button basic fluid color='red' onClick={this.show}>Open</Button>
             </LetterModal>
-          </Card.Content>
-        </Card>
+          }
+        />
       )
     });
   }
 
   render() {
     return (
-      <div>
-        <Container>
+      <div className='letters-list'>
+        {/* <Container> */}
+          {/* <Segment basic textAlign='center'>
+            <Header as='h2' icon >
+              Letters
+              <Header.Subheader>
+                Each letter is a lesson. Complete a lesson and get access to the next letter.
+              </Header.Subheader>
+            </Header>
+          </Segment> */}
           <Segment basic>
-            <Card.Group itemsPerRow={6}>
+            <Card.Group itemsPerRow={4}>
               {this.renderLetters()}
             </Card.Group>
           </Segment>
-        </Container>
+        {/* </Container> */}
       </div>
     );
   }

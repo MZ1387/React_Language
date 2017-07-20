@@ -4,7 +4,7 @@ import { Grid, Embed, Segment, Header, Image, Button, Container } from 'semantic
 class StudentStart extends Component {
   render() {
     return (
-      <div>
+      <div className='student-start'>
         <Container>
         <Segment basic>
           <Grid>
@@ -24,26 +24,6 @@ class StudentStart extends Component {
 
             </Grid.Row>
           </Grid>
-          {/* <Grid columns={2}>
-            <Grid.Row>
-              <Grid.Column>
-                <Image src={'https://react.semantic-ui.com/assets/images/wireframe/image.png'} size='medium'
-                floated=''
-                centered
-                />
-                <Header as='h1' textAlign='center'>Letters</Header>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...
-              </Grid.Column>
-              <Grid.Column>
-                <Image src={'https://react.semantic-ui.com/assets/images/wireframe/image.png'} size='medium'
-                floated=''
-                centered
-                />
-                <Header as='h1' textAlign='center'>Study Cards</Header>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore...
-              </Grid.Column>
-            </Grid.Row>
-          </Grid> */}
         </Segment>
         </Container>
       </div>

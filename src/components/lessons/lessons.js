@@ -40,7 +40,7 @@ class Lessons extends Component {
         <Table.Row key={serverKey}>
           <Table.Cell>{title}</Table.Cell>
           <Table.Cell>
-            {(description.length > 50 ) ? (description.substring(0, 50) + '...') : (description)}
+            {description}
           </Table.Cell>
           <Table.Cell>
             <LessonModalUpdate lessonDetails={lesson}
@@ -56,7 +56,7 @@ class Lessons extends Component {
 
   render() {
     return (
-      <div>
+      <div className='lessons'>
         {/* <Container> */}
           <Segment basic>
             <Grid>

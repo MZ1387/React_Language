@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Grid, Modal, Embed } from 'semantic-ui-react';
+
 import LetterTable from './letter_table';
 import LetterSegment from './letter_segment';
+// import './letters.css';
 
 class LetterModal extends Component {
   constructor(props) {
@@ -16,8 +18,8 @@ class LetterModal extends Component {
     const { title, description, message, link, vocab, serverKey } = this.props.letterDetails;
 
     return (
-      <div>
-        <Modal size={'large'} trigger={this.props.children} closeIcon='close'>
+      <div >
+        <Modal size={'large'} trigger={this.props.children} closeIcon='close' className='letter-modal'>
           <Modal.Header>{title}</Modal.Header>
           <Modal.Content>
             <Modal.Description>
@@ -39,6 +41,7 @@ class LetterModal extends Component {
                   <Grid.Column width={10}>
                     <Embed
                       id={link}
+                      // icon='mail outline'
                       placeholder='http://www.oneequalworld.com/wp-content/uploads/2017/02/shutterstock_201120113.jpg'
                       source='youtube'
                     />
@@ -55,4 +58,4 @@ class LetterModal extends Component {
   }
 }
 
-export default LetterModal
+export default LetterModal;

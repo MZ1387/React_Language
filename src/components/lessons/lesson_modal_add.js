@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { Icon, Table, Grid, Segment, Divider, Button, Input, Form, TextArea, Modal } from 'semantic-ui-react';
 
-import { lessonsRef, categoriesRef } from '../../firebase';
+import { lessonsRef, categoriesRef, languagesRef } from '../../firebase';
 import { getCategories } from '../../store/actions/action_lessons';
 
 class LessonModalAdd extends Component {
@@ -78,14 +78,28 @@ class LessonModalAdd extends Component {
 
     lessonsRef.push({ title, description, message, link: videoId, vocab })
     // categoriesRef.transaction(data => {
-    //   const categories = ['noun', 'verb', 'adjective', 'phrasal verb', 'idiom', 'slang'];
+    //   const categories = ['phrase','noun', 'verb', 'adjective', 'phrasal verb', 'idiom', 'slang', 'preposition'];
     //   return categories.sort();
     //     })
+
+    // languagesRef.transaction(data => {
+    //   const languages = ['Spanish', 'French', 'Italian', 'Portuguese', 'Polish', 'Russian', 'Turkish'];
+      // [
+      //   { key: 'Spanish', value: 'Spanish', text: 'Spanish' },
+      //   { key: 'French', value: 'French', text: 'French' },
+      //   { key: 'Italian', value: 'Italian', text: 'Italian' },
+      //   { key: 'Portuguese', value: 'Portuguese', text: 'Portuguese' },
+      //   { key: 'Polish', value: 'Polish', text: 'Polish' },
+      //   { key: 'Turkish', value: 'Turkish', text: 'Turkish' },
+      //   { key: 'Russian', value: 'Russian', text: 'Russian' }
+      // ]
+      // return languages.sort();
+      //   })
   }
 
   render() {
     return (
-      <div>
+      <div className='lesson-modal-add'>
         <Modal size={'large'} trigger={this.props.children} closeIcon='close'>
           <Modal.Header>Add Lesson</Modal.Header>
           <Modal.Content>
@@ -133,9 +147,8 @@ class LessonModalAdd extends Component {
           </Modal.Content>
           <Modal.Actions>
             <Button content='Save'
-              onClick={() => this.addLesson()}
               positive
-              fluid
+              onClick={() => this.addLesson()}
             />
           </Modal.Actions>
         </Modal>

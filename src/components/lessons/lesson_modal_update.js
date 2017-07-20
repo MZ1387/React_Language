@@ -87,7 +87,7 @@ class LessonModalUpdate extends Component {
     const { serverKey, title, description, message, link, vocab } = this.props.lessonDetails;
 
     return (
-      <div>
+      <div className='lesson-modal-update'>
         <Modal size={'large'} trigger={this.props.children} closeIcon='close'>
           <Modal.Header>Update Lesson</Modal.Header>
           <Modal.Content>

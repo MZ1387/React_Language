@@ -12,3 +12,4 @@ const config = {
 export const firebaseApp = firebase.initializeApp(config);
 export const lessonsRef = firebase.database().ref('lessons');
 export const categoriesRef = firebase.database().ref('categories');
+export const languagesRef = firebase.database().ref('languages');

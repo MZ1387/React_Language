@@ -25,7 +25,7 @@ class LetterSegment extends Component {
     ];
 
     return (
-      <div>
+      <div className='letter-segment'>
         <Accordion panels={panels} exclusive={false} fluid/>
       </div>
     );

@@ -5,7 +5,9 @@ import { Grid, Table, Container, Segment, Button, Menu, Icon, Header } from 'sem
 class StudentHome extends Component {
   render() {
     return (
-      <div>Student Home</div>
+      <div className='student-home'>
+        Student Home
+      </div>
     );
   }
 }

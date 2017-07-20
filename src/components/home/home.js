@@ -16,7 +16,7 @@ class Home extends Component {
     const { open, size } = this.state
 
     return (
-      <div>
+      <div className='home'>
         <Container fluid>
           <Header as='h2'>Pennie</Header>
           <Divider />

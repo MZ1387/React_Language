@@ -18,12 +18,9 @@ class CardTable extends Component {
 
   render() {
     return (
-      <div>
+      <div className='card-table'>
         <Table celled>
           <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell colSpan='3'>Vocab</Table.HeaderCell>
-            </Table.Row>
             <Table.Row>
               <Table.HeaderCell colSpan='1'>Word/Phrase</Table.HeaderCell>
               <Table.HeaderCell colSpan='1'>Definition</Table.HeaderCell>

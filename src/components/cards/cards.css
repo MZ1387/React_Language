@@ -1,0 +1,19 @@
+.postcard-container {
+  position: relative;
+  width: 50%;
+}
+
+.postcard-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.postcard-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #FDF1E3;
+}

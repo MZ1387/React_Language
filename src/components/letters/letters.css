@@ -1,0 +1,11 @@
+.ui.modal>.content {
+  background: #eadfd2;
+}
+
+.ui.large.modal>.header {
+  border-bottom: 2px solid #16a6d0;
+}
+
+.ui.modal>.actions {
+  border-top: 2px solid #16a6d0;
+}

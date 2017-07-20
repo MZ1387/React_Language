@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, Container, Image, Segment } from 'semantic-ui-react';
+import { Button, Card, Container, Image, Segment, Header, Icon } from 'semantic-ui-react';
 
 import { lessonsRef, categoriesRef } from '../../firebase';
 import { getCategories, getLessons } from '../../store/actions/action_lessons';
@@ -49,43 +49,43 @@ class CardsList extends Component {
       console.log('categoryVocab', categoryVocab);
 
       return (
-        <Card key={index}>
-        <Card.Content>
-          <Image floated='right' size='mini' src='https://react.semantic-ui.com/assets/images/avatar/small/stevie.jpg' />
-          <Card.Header>
-            Category: {category}
-          </Card.Header>
-          <Card.Meta>
-          </Card.Meta>
-          <Card.Description>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <CardModal
-            category={category}
-            categoryVocab={categoryVocab}
-          >
-            <Button basic fluid color='red' onClick={this.show}>Open</Button>
-          </CardModal>
-        </Card.Content>
-      </Card>
+        <Card
+          raised
+          key={index}
+          image='http://www.oneequalworld.com/wp-content/uploads/2017/02/shutterstock_201120113.jpg'
+          description={
+            <CardModal
+              category={category}
+              categoryVocab={categoryVocab}
+            >
+              <Button basic color='red' fluid onClick={this.show}>
+                {(category === 'slang') ? (category) : (`${category}s`)}
+              </Button>
+            </CardModal>
+          }
+        />
       );
     })
   }
 
   render() {
-    // console.log(this.props.vocab);
-    // const nouns = _.filter(this.props.vocab, ['category', 'noun']);
-    // console.log(nouns);
     return(
-      <div>
-        <Container>
-          <Segment basic>
-            <Card.Group itemsPerRow={6}>
+      <div className='cards-list'>
+        {/* <Container> */}
+          {/* <Segment basic textAlign='center'>
+            <Header as='h2' icon >
+              Study Cards
+              <Header.Subheader>
+                Study all the phrases and vocabulary you learned in the letters. Just click on the topic to test your knowledge.
+              </Header.Subheader>
+            </Header>
+          </Segment> */}
+          <Segment basic >
+            <Card.Group itemsPerRow={4}>
               {this.renderCards()}
             </Card.Group>
           </Segment>
-        </Container>
+        {/* </Container> */}
       </div>
     );
   }

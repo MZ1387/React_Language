@@ -17,7 +17,7 @@ class LetterTable extends Component {
 
   render() {
     return (
-      <div>
+      <div className='letter-table'>
         <Table celled>
           <Table.Header>
             <Table.Row>

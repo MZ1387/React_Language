@@ -4,7 +4,7 @@ import { Button, Icon, Modal, Segment, Header } from 'semantic-ui-react';
 class LoginModal extends Component {
   render() {
     return (
-      <div>
+      <div className='login-modal'>
         <Modal size={'small'} trigger={this.props.children} closeIcon='close' basic>
           <Modal.Header></Modal.Header>
           <Modal.Content>
