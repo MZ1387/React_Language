@@ -13,3 +13,13 @@ export const firebaseApp = firebase.initializeApp(config);
 export const lessonsRef = firebase.database().ref('lessons');
 export const categoriesRef = firebase.database().ref('categories');
 export const languagesRef = firebase.database().ref('languages');
+
+export function saveUser (user) {
+  firebase.database().ref(`users/${user.uid}`)
+  .set({
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName,
+        photo: user.photoURL
+      });
+}

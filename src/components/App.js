@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch  } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter, Switch  } from 'react-router-dom';
 
 import Home from './home/home';
 import StudentStart from './start/start_student';
@@ -8,12 +9,11 @@ import StudentMenu from './student/student_menu';
 import LettersList from './letters/letters_list';
 import CardsList from './cards/cards_list'
 import Lessons from './lessons/lessons';
-import Translator from './translator/translator';
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <StudentMenu>
           <Switch>
             <Route path='/lessons' component={Lessons} />
@@ -24,9 +24,9 @@ class App extends Component {
             <Route path='/' component={Home} />
           </Switch>
         </StudentMenu>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
-export default App
+export default App;

@@ -76,7 +76,9 @@ class LessonModalUpdate extends Component {
 
   updateLesson(serverKey) {
     const { title, description, message, link, vocab } = this.state;
-    lessonsRef.child(serverKey).update({ title, description, message, link, vocab });
+    const videoId = link.split('=').pop().split('&t').shift();
+
+    lessonsRef.child(serverKey).update({ title, description, message, link: videoId, vocab });
   }
 
   removeLesson(serverKey) {
@@ -89,7 +91,7 @@ class LessonModalUpdate extends Component {
     return (
       <div className='lesson-modal-update'>
         <Modal size={'large'} trigger={this.props.children} closeIcon='close'>
-          <Modal.Header>Update Lesson</Modal.Header>
+          <Modal.Header>{title}</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field control={Input} label='Title' placeholder='Title' onChange={event => this.setState({ title: event.target.value })} value={this.state.title} />

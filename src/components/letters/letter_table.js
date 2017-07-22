@@ -9,7 +9,7 @@ class LetterTable extends Component {
       return (
         <Table.Row key={index}>
           <Table.Cell>{term}</Table.Cell>
-          <Table.Cell></Table.Cell>
+          <Table.Cell>{definition}</Table.Cell>
         </Table.Row>
       );
     })
@@ -24,8 +24,8 @@ class LetterTable extends Component {
               <Table.HeaderCell colSpan='2'>Vocab</Table.HeaderCell>
             </Table.Row>
             <Table.Row>
-              <Table.HeaderCell colSpan='1'>Original</Table.HeaderCell>
-              <Table.HeaderCell colSpan='1'>Translation</Table.HeaderCell>
+              <Table.HeaderCell colSpan='1'>Word/Phrase/</Table.HeaderCell>
+              <Table.HeaderCell colSpan='1'>Definition</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>

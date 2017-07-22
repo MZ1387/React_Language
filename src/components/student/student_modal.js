@@ -4,6 +4,7 @@ import { Button, Grid, Modal, Image, Header, Dropdown } from 'semantic-ui-react'
 class StudentModal extends Component {
 
   render() {
+    const { uid, displayName, email, photoURL } = this.props.userDetails;
     const languages = [
       { key: 'Spanish', value: 'Spanish', text: 'Spanish' },
       { key: 'French', value: 'French', text: 'French' },
@@ -24,19 +25,21 @@ class StudentModal extends Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column width={3}>
-                  <Image src={'https://react.semantic-ui.com/assets/images/wireframe/image.png'} size='small' />
+                  <Image src={photoURL} size='small' />
                 </Grid.Column>
                 <Grid.Column width={13}>
-                  <Header as='h2'>Name</Header>
-                  <p>USERNAME</p>
-                  <Header as='h2'>Language</Header>
-                  <Dropdown placeholder='Translate To...' fluid selection options={languages} />
+                  <Header as='h3'>Name:</Header>
+                  <p>{displayName}</p>
+                  <Header as='h3'>Email:</Header>
+                  <p>{email}</p>
+                  {/* <Header as='h2'>Language</Header>
+                  <Dropdown placeholder='Translate To...' fluid selection options={languages} /> */}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </Modal.Content>
           <Modal.Actions>
-            <Button positive content='Save' />
+            {/* <Button positive content='Save' /> */}
           </Modal.Actions>
         </Modal>
       </div>

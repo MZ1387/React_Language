@@ -15,13 +15,12 @@ class StudentMenu extends Component {
 
     return (
       <div className='student-menu'>
-        <Menu pointing secondary fixed=''>
-          <Menu.Item name='Lessons' active={activeItem === 'Lessons'} onClick={this.handleItemClick} as={NavLink} to='/lessons'/>
-          <Menu.Item name='Letters' active={activeItem === 'Letters'} onClick={this.handleItemClick} as={NavLink} to='/letters'/>
-          <Menu.Item name='Cards' active={activeItem === 'Cards'} onClick={this.handleItemClick} as={NavLink} to='/cards'/>
-          <Menu.Item name='Translate' active={activeItem === 'Translate'} onClick={this.handleItemClick} as={NavLink} to='/translator'/>
+        <Menu pointing secondary fixed='' color='blue' >
+          <Menu.Item name='lessons' active={activeItem === 'lessons'} onClick={this.handleItemClick} as={NavLink} to='/lessons'/>
+          <Menu.Item name='letters' active={activeItem === 'letters'} onClick={this.handleItemClick} as={NavLink} to='/letters'/>
+          <Menu.Item name='cards' active={activeItem === 'cards'} onClick={this.handleItemClick} as={NavLink} to='/cards'/>
           <Menu.Menu position='right'>
-            <StudentModal>
+            <StudentModal userDetails={this.props.user}>
               <Menu.Item name='profile' />
             </StudentModal>
             <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
@@ -36,4 +35,10 @@ class StudentMenu extends Component {
   }
 }
 
-export default StudentMenu;
+function mapStateToProps(state) {
+  return {
+    user: state.user.user
+  };
+}
+
+export default connect(mapStateToProps)(StudentMenu);

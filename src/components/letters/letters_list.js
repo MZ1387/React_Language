@@ -4,6 +4,7 @@ import { Button, Card, Container, Image, Segment, Header } from 'semantic-ui-rea
 
 import { lessonsRef, categoriesRef } from '../../firebase';
 import { getCategories, getLessons } from '../../store/actions/action_lessons';
+import { translate } from '../../store/actions/action_translator';
 import LetterModal from './letter_modal';
 
 class LettersList extends Component {
@@ -11,7 +12,8 @@ class LettersList extends Component {
     super(props);
 
     this.state = {
-
+      from: 'en',
+      to: 'es'
     };
   }
 
@@ -32,6 +34,18 @@ class LettersList extends Component {
     })
   }
 
+  handleSubmit(lesson) {
+    const { message } = lesson;
+
+    var text = message;
+    var from = this.state.from;
+    var to = this.state.to;
+
+    if (text && from && to) {
+      this.props.dispatch(translate(text, from, to, this.props.dispatch));
+    }
+  }
+
   renderLetters() {
     return this.props.lessons.map((lesson, index) => {
       const { title, description } = lesson;
@@ -45,7 +59,7 @@ class LettersList extends Component {
           description={description}
           extra={
             <LetterModal letterDetails={lesson}>
-              <Button basic fluid color='red' onClick={this.show}>Open</Button>
+              <Button basic fluid color='red' onClick={() => this.handleSubmit(lesson)}>Open</Button>
             </LetterModal>
           }
         />

@@ -1,11 +1,11 @@
-.ui.modal>.content {
+.ui.modal>.letter-modal-content {
   background: #eadfd2;
 }
 
-.ui.large.modal>.header {
+.ui.large.modal>.letter-modal-header {
   border-bottom: 2px solid #16a6d0;
 }
 
-.ui.modal>.actions {
+.ui.modal>.letter-modal-actions {
   border-top: 2px solid #16a6d0;
 }

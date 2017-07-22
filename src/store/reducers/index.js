@@ -5,6 +5,7 @@ import CardsList from './reducer_cards';
 import LettersList from './reducer_letters';
 import LessonsList from './reducer_lessons';
 import Translator from './reducer_translator';
+import User from './reducer_user';
 
 const rootReducer = combineReducers({
   letters: LettersList,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   lessons: LessonsList,
   form: formReducer,
   translator: Translator,
+  user: User
 });
 
 export default rootReducer;
